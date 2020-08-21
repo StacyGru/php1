@@ -12,7 +12,7 @@
                 <li><a href="<?php
 
                     $name='Главная';
-                    $link-'index1.php';
+                    $link='index1.php';
                     $current_page=false;
 
                     echo $link;
@@ -29,8 +29,8 @@
                 <li><a href="<?php
 
                     $name='Виды суккулентов';
-                    $link-'index2.php';
-                    $current_page=true;
+                    $link='index2.php';
+                    $current_page=false;
 
                     echo $link;
 
@@ -46,8 +46,8 @@
                 <li><a href="<?php
 
                     $name='Уход за суккулентам';
-                    $link-'index3.php';
-                    $current_page=false;
+                    $link='index3.php';
+                    $current_page=true;
 
                     echo $link;
 
