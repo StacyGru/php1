@@ -2,7 +2,10 @@ body
 {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+<<<<<<< HEAD
     background-color: lightgray;
+=======
+>>>>>>> 98e59e37417ced3bdf55e152c2dd601eb8a9e950
 }
 
 header
@@ -18,7 +21,12 @@ header
 main
 {
     margin-top: 100px;
+<<<<<<< HEAD
     margin-bottom: 50px;
+=======
+    background-color: lightgray;
+    height: 1000px;
+>>>>>>> 98e59e37417ced3bdf55e152c2dd601eb8a9e950
     padding: 20px;
 }
 
