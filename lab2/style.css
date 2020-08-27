@@ -1,0 +1,55 @@
+body
+{
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: lightgray;
+}
+
+header
+{
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    background-color: lemonchiffon;
+    color: orange;
+}
+
+main
+{
+    margin-top: 100px;
+    margin-bottom: 50px;
+    padding: 20px;
+}
+
+footer
+{
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    position: fixed;
+    background-color: lightsteelblue;
+    padding-left: 20px;
+    color: white;
+    line-height: 50px;
+}
+
+img
+{
+    height: 80px;
+    margin-left: 30px;
+    margin-top: 10px;
+    float: left;
+}
+
+h1
+{
+    font-size: 15px;
+    font-weight: normal;
+    text-align: center;
+    margin-left: 100px;
+    line-height: 20px;
+    vertical-align: middle;
+    margin-top: 20px;
+}
