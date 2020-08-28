@@ -21,10 +21,13 @@
 
         <main lang="en">
             <?php
-                    $x = -10;
+                    $x = 10;
                     $encounting = 10000;
                     $step = 2;
                     $type = 'A';
+
+                    $min_value = 10;
+                    $max_value = 20;
 
                     if ($type == 'B')
                         echo '<ul>';
@@ -34,7 +37,7 @@
                         if ($x <= 10)
                             $f = $x*$x*($x-2)+4;
                         else
-                        if ($x > 10 && $x < 200)
+                        if ($x > 10 && $x < 20)
                             $f = 11*$x-55;
                         else
                         {
@@ -56,6 +59,10 @@
                         {
                             echo '<li>f('.$x.')='.$f.'</li>';
                         }
+
+
+                        if ($f>=$max_value || $f<$min_value) // || это ИЛИ
+                            break;
                     }
 
                     if ($type == 'B')
