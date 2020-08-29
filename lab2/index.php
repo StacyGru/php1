@@ -24,13 +24,29 @@
                     $x = -10;
                     $encounting = 10000;
                     $step = 2;
-                    $type = 'B';
+                    $type = 'E';
 
                     $min_value = -2000; // минимальное и максимальное значение ФУНКЦИИ
                     $max_value = 800;
 
-                    if ($type == 'B')
-                        echo '<ul>';
+                    $sum = 0;
+                    $count = 0;
+
+                    $tr = 1;
+
+                    switch ($type)
+                    {
+                        case 'B':
+                            echo '<ul>';
+                            break;
+                        case 'C':
+                            echo '<ol>';
+                            break;
+                        case 'D':
+                            echo '<table rules="all"> <tr> <th>№</th> <th>x</th> <th>f(x)</th> </tr>';
+                            break;
+                    }
+                    
 
                     $i = 0;
                     
@@ -50,30 +66,73 @@
                                 $f = ($x-100)/(100-$x)-$x/10+2;
                         }
                         
-                        if ($type == 'A')
+                        switch ($type)
                         {
-                            echo 'f('.$x.')='.$f;
-                            if ($i < $encounting-1)
-                                echo '<br>';
+                            case 'A':
+                                echo 'f('.$x.')='.$f;
+                                if ($i < $encounting-1)
+                                    echo '<br>';
+                                break;
+                            case 'B':
+                                echo '<li>f('.$x.')='.$f.'</li>';
+                                break;
+
+                            case 'C':
+                                echo '<li>f('.$x.')='.$f.'</li>';
+                                break; 
+
+                            case 'D':
+                                echo '<tr> <td>'.$tr.'</td> <td>'.$x.'</td> <td>'.$f.'</td> </tr>';
+                                $tr++;
+                                break;
+
+                            case 'E':
+                                echo '<div class="el">f('.$x.')='.$f.'</div>';
+                                break;
                         }
-                        else
-                        if ($type == 'B')
-                        {
-                            echo '<li>f('.$x.')='.$f.'</li>';
-                        }
+
+                        if ($i == 0)
+                            $min_el = $f;
+                            $max_el = $f;
+                        
+                        if ($f > $max_el)
+                            $max_el = $f;
+                        
+                        if ($f < $min_el)
+                            $min_el = $f;
+
+                        $sum += $f;
+                        $count++;
 
                         $i++;
                         $x += $step;
                     }
                     while ($i < $encounting && $f <= $max_value && $f >= $min_value);
 
-                    if ($type == 'B')
-                        echo '</ul>';
+                    switch ($type)
+                    {
+                        case 'B':
+                            echo '</ul>';
+                            break;
+                        case 'C':
+                            echo '</ol>';
+                            break;
+                        case 'D':
+                            echo '</table>';
+                            break;
+                    }
+
+                    echo '<br>Максимальное значение функции на заданном промежутке: '.$max_el.'<br>';
+                    echo 'Минимальное значение функции на заданном промежутке: '.$min_el.'<br>';
+                    echo 'Cреднее арифметическое всех значений функции на заданном промежутке: '.$sum/$count.'<br>';
+                    echo 'Сумма всех значений функции на заданном промежутке: '.$sum;
                 ?>
             </main>
 
         <footer>
-            Подвал
+            <?php
+            echo 'Тип вёрстки: '.$type;
+            ?>
             </footer>
         </body>
     </html>
