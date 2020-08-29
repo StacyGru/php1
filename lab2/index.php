@@ -21,21 +21,24 @@
 
         <main lang="en">
             <?php
-                    $x = 10;
+                    $x = -10;
                     $encounting = 10000;
                     $step = 2;
-                    $type = 'A';
+                    $type = 'B';
 
-                    $min_value = 10;
-                    $max_value = 20;
+                    $min_value = -2000; // минимальное и максимальное значение ФУНКЦИИ
+                    $max_value = 800;
 
                     if ($type == 'B')
                         echo '<ul>';
 
-                    for ($i=0; $i < $encounting; $i++, $x += $step) // += это сложение
+                    $i = 0;
+                    $f = 0;
+
+                    while ($i < $encounting && (($f <= $max_value && $f >= $min_value) || !$i)) // !$i это логическое отрицание, т.е. TRUE если $i FALSE, т.е. в данном случае = 0 (первое вычисление)
                     {
                         if ($x <= 10)
-                            $f = $x*$x*($x-2)+4;
+                            $f = ($x**2)*($x-2)+4; // $a ** $b это возведение числа $a в степень $b
                         else
                         if ($x > 10 && $x < 20)
                             $f = 11*$x-55;
@@ -60,9 +63,8 @@
                             echo '<li>f('.$x.')='.$f.'</li>';
                         }
 
-
-                        if ($f>=$max_value || $f<$min_value) // || это ИЛИ
-                            break;
+                        $i++;
+                        $x += $step;
                     }
 
                     if ($type == 'B')
