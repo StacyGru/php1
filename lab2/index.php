@@ -33,9 +33,8 @@
                         echo '<ul>';
 
                     $i = 0;
-                    $f = 0;
-
-                    while ($i < $encounting && (($f <= $max_value && $f >= $min_value) || !$i)) // !$i это логическое отрицание, т.е. TRUE если $i FALSE, т.е. в данном случае = 0 (первое вычисление)
+                    
+                    do
                     {
                         if ($x <= 10)
                             $f = ($x**2)*($x-2)+4; // $a ** $b это возведение числа $a в степень $b
@@ -66,6 +65,7 @@
                         $i++;
                         $x += $step;
                     }
+                    while ($i < $encounting && $f <= $max_value && $f >= $min_value);
 
                     if ($type == 'B')
                         echo '</ul>';
