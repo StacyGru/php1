@@ -74,7 +74,7 @@ div.container
     margin-right: auto;
 }
 
-div.window
+.window
 {
     width: 1fr;
     height: 50px;
@@ -84,7 +84,14 @@ div.window
     font-size: 15px;
 }
 
-div.num
+a
+{
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.num
 {
     width: 50px;
     height: 50px;
@@ -94,7 +101,7 @@ div.num
     font-size: 20px;
 }
 
-div.reset
+.reset
 {
     width: 100%;
     height: 50px;
@@ -104,59 +111,59 @@ div.reset
     grid-area: reset;
 }
 
-div.item
+.item
 {
     text-align: center;
     line-height: 50px;
     font-size: 25px;
 }
 
-div.num:nth-child(2)
+.num:nth-child(2)
 {
     grid-area: num1;
 }
 
-div.num:nth-child(3)
+.num:nth-child(3)
 {
     grid-area: num2;
 }
 
-div.num:nth-child(4)
+.num:nth-child(4)
 {
     grid-area: num3;
 }
 
-div.num:nth-child(5)
+.num:nth-child(5)
 {
     grid-area: num4;
 }
 
-div.num:nth-child(6)
+.num:nth-child(6)
 {
     grid-area: num5;
 }
 
-div.num:nth-child(7)
+.num:nth-child(7)
 {
     grid-area: num6;
 }
 
-div.num:nth-child(8)
+.num:nth-child(8)
 {
     grid-area: num7;
 }
 
-div.num:nth-child(9)
+.num:nth-child(9)
 {
     grid-area: num8;
 }
 
-div.num:nth-child(10)
+.num:nth-child(10)
 {
     grid-area: num9;
 }
 
-div.num:nth-child(11)
+.num:nth-child(11)
 {
     grid-area: num0;
 }

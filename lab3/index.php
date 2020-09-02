@@ -23,18 +23,30 @@
             <div class="container">
 
                 <div class="item window">
+                    <?php
+                        if (!isset($STORE))
+                            $STORE = '';
+
+                        if (!isset($_GET['num']))
+                            $STORE .= $_GET['num'];
+
+                        if (!isset($_GET['reset']))
+                            $STORE = '';
+
+                        echo $STORE;
+                    ?>
                     </div>
-                <div class="item num">1</div>
-                <div class="item num">2</div>
-                <div class="item num">3</div>
-                <div class="item num">4</div>
-                <div class="item num">5</div>
-                <div class="item num">6</div>
-                <div class="item num">7</div>
-                <div class="item num">8</div>
-                <div class="item num">9</div>
-                <div class="item num">0</div>
-                <div class="item reset">СБРОС</div>
+                <a class="item num" href="/lab3/index.php/?num=1">1</a>
+                <a class="item num" href="/lab3/index.php/?num=2">2</a>
+                <a class="item num" href="/lab3/index.php/?num=3">3</a>
+                <a class="item num" href="/lab3/index.php/?num=4">4</a>
+                <a class="item num" href="/lab3/index.php/?num=5">5</a>
+                <a class="item num" href="/lab3/index.php/?num=6">6</a>
+                <a class="item num" href="/lab3/index.php/?num=7">7</a>
+                <a class="item num" href="/lab3/index.php/?num=8">8</a>
+                <a class="item num" href="/lab3/index.php/?num=9">9</a>
+                <a class="item num" href="/lab3/index.php/?num=0">0</a>
+                <a class="item reset" href="/lab3/index.php/?reset=Y">СБРОС</a>
                 
                 </div>
                 
