@@ -24,29 +24,30 @@
 
                 <div class="item window">
                     <?php
-                        if (!isset($STORE))
-                            $STORE = '';
-
-                        if (!isset($_GET['num']))
-                            $STORE .= $_GET['num'];
-
-                        if (!isset($_GET['reset']))
+                        if (!isset($_GET['key']))
+                        {
+                            if ($_GET['key']=='reset')
+                                $STORE = '';
+                            else
+                                $STORE .= $_GET['key'];
+                        }
+                        else
                             $STORE = '';
 
                         echo $STORE;
                     ?>
                     </div>
-                <a class="item num" href="/lab3/index.php/?num=1">1</a>
-                <a class="item num" href="/lab3/index.php/?num=2">2</a>
-                <a class="item num" href="/lab3/index.php/?num=3">3</a>
-                <a class="item num" href="/lab3/index.php/?num=4">4</a>
-                <a class="item num" href="/lab3/index.php/?num=5">5</a>
-                <a class="item num" href="/lab3/index.php/?num=6">6</a>
-                <a class="item num" href="/lab3/index.php/?num=7">7</a>
-                <a class="item num" href="/lab3/index.php/?num=8">8</a>
-                <a class="item num" href="/lab3/index.php/?num=9">9</a>
-                <a class="item num" href="/lab3/index.php/?num=0">0</a>
-                <a class="item reset" href="/lab3/index.php/?reset=Y">СБРОС</a>
+                <a class="item num" href="/lab3/index.php/?key=1">1</a>
+                <a class="item num" href="/lab3/index.php/?key=2">2</a>
+                <a class="item num" href="/lab3/index.php/?key=3">3</a>
+                <a class="item num" href="/lab3/index.php/?key=4">4</a>
+                <a class="item num" href="/lab3/index.php/?key=5">5</a>
+                <a class="item num" href="/lab3/index.php/?key=6">6</a>
+                <a class="item num" href="/lab3/index.php/?key=7">7</a>
+                <a class="item num" href="/lab3/index.php/?key=8">8</a>
+                <a class="item num" href="/lab3/index.php/?key=9">9</a>
+                <a class="item num" href="/lab3/index.php/?key=0">0</a>
+                <a class="item reset" href="/lab3/index.php/?key=Y">СБРОС</a>
                 
                 </div>
                 
