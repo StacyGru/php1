@@ -18,22 +18,39 @@
             <div class="main_menu">
                 <?php
 
-                echo '<a href="?html_type=TABLE"';  // начало кнопки "Табличная форма"
-                if (array_key_exists ('html_type', $_GET) && $_GET['html_type'] == 'TABLE')
-                    echo ' class="selected"';   // если был передан параметр html_type == "TABLE" то ссылка подсвечивается
-                echo '>Табличная форма</a>';
+                    echo '<a href="?html_type=TABLE"';  // кнопка "Табличная форма"
+                    if (array_key_exists ('html_type', $_GET) && $_GET['html_type'] == 'TABLE')
+                        echo ' class="selected"';   // если был передан параметр html_type == "TABLE", то кнопка подсвечивается
+                    echo '>Табличная форма</a>';
 
-                echo '<a href="?html_type=DIV"';    // начало кнопки "Блочная форма"
-                if (array_key_exists ('html_type', $_GET) && $_GET['html_type'] == 'DIV')
-                    echo ' class="selected"';   // если был передан параметр html_type == "DIV" то ссылка подсвечивается
-                echo '>Блочная форма</a>';
+                    echo '<a href="?html_type=DIV"';    // кнопка "Блочная форма"
+                    if (array_key_exists ('html_type', $_GET) && $_GET['html_type'] == 'DIV')
+                        echo ' class="selected"';   // если был передан параметр html_type == "DIV", то кнопка подсвечивается
+                    echo '>Блочная форма</a>';
                 
                 ?>
                 </div>
             </header>
 
         <main>
-            Основной блок
+            <div class="product_menu">
+                <?php
+
+                    echo '<a href="/lab5/index.php"'; // кнопка "Вся таблица умножения"
+                    if (!isset($_GET['content']))   // если параметр content не был передан, то кнопка подсвечивается
+                        echo ' class="selected"';
+                    echo '>Вся таблица умножения</a><br>';
+
+                    for ($i=2; $i<=9; $i++) // счётчик от 2 до 9
+                    {
+                        echo '<a href="?content='.$i. '" '; // значение параметра content == цифре на кнопке == значению счётчика
+                        if (isset ($_GET['content']) && $_GET['content']==$i)   // если переданное значение параметра content == значению счётчика, то кнопка подсвечивается 
+                            echo ' class="selected"';
+                        echo '>Таблица умножения на '.$i.'</a><br>';
+                    }
+
+                ?>
+                </div>
             </main>
 
         <footer>

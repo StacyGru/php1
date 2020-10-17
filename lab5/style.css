@@ -67,3 +67,17 @@ h1
 {
     background-color: lightgreen;
 }
+
+.product_menu a
+{
+    display: inline-block;
+    margin: 10px;
+    padding: 5px;
+    text-decoration: none;
+    color: darkgreen;
+}
+
+.product_menu a.selected
+{
+    background-color: lightgreen;
+}
