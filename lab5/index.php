@@ -45,10 +45,14 @@
         <main>
             <div class="product_menu">
                 <?php
-
+                   
+                    echo '<div class="m">';
+                   
                     echo '<a href="'; // кнопка "Вся таблица умножения"
                     if (isset($_GET['html_type']))   // добавляем параметр html_type (если он был задан)
                         echo '?html_type='.$_GET['html_type'];
+                    else
+                        echo '/lab5';
                     echo '"';
                     if (!isset($_GET['content']))   // если параметр content не был передан, то кнопка подсвечивается
                         echo ' class="selected"';
@@ -65,13 +69,55 @@
                         echo '>Таблица умножения на '.$i.'</a><br>';
                     }
 
+                ?>
+                </div>
+
+            <div class="main">
+                <?php
+                    
                     function outRow($n)
                     {
                         for ($i=2; $i<10; $i++)
-                            echo $n.'x'.$i.'='.($n*$i).'</br>';
+                        {
+                            echo outNumAsLink($n).'x',outNumAsLink($i).'=',outNumAsLink($n*$i).'</br>';
+                        }
+                    }
+
+                    function outNumAsLink($p)
+                    {
+                        if (1<$p && $p<10)
+                        {
+                            echo '<a href="?content='.$p; // значение параметра content == цифре на кнопке == значению счётчика
+                            if (isset($_GET['html_type']))   // добавляем параметр html_type (если он был задан)
+                                echo '&html_type='.$_GET['html_type'];
+                            echo '" class="num">'.$p.'</a>';
+                        }
+                        else
+                            echo $p;
                     }
 
                     function outTableForm() // функция вывода в табличной форме
+                    {
+                        echo '<table><tr>';
+                        if  (!isset($_GET['content']))  // если параметр content не был задан то выводим всю таблицу целиком
+                        {
+                            for ($i=2; $i<10; $i++) // счётчик от 2 до 9
+                            {
+                                echo '<td class="ttRow">';
+                                outRow($i);
+                                echo '</td>';
+                            }
+                        }
+                        else    // если параметр content был задан то выводим соответствующую таблицу
+                        {
+                            echo '<td class="ttSingleRow">';
+                            outRow($_GET['content']);
+                            echo '</td>';
+                        }
+                        echo '</table></tr>';
+                    }
+
+                    function outDivForm()   // функция вывода в блочной форме
                     {
                         if  (!isset($_GET['content']))  // если параметр content не был задан то выводим всю таблицу целиком
                         {
@@ -90,11 +136,6 @@
                         }
                     }
 
-                    function outDivForm()   // функция вывода в блочной форме
-                    {
-
-                    }
-
                     if (!isset($_GET['html_type']) || $_GET['html_type']=='TABLE')  // если тип вёрстки не задан (по умолчанию - табличная) или задан тип вёрстки "TABLE"
                         outTableForm();
                     else 
@@ -105,7 +146,27 @@
             </main>
 
         <footer>
-            Подвал
+            <?php
+
+            echo 'Тип вёрстки: ';
+            if (!isset($_GET['html_type']) || $_GET['html_type']=='TABLE')
+                echo 'табличная';
+            else
+                echo 'блочная';
+
+            echo '<br>';
+
+            if (!isset($_GET['content']))
+                echo 'Полная таблица умножения';
+            else
+                echo 'Таблица умножения на '.$_GET['content'];  
+
+            echo '<br>';
+            
+            date_default_timezone_set("Europe/Moscow");
+            echo '<span>'.date("d.m.Y").', '.date("H:i:s").'</span>';
+
+            ?>
             </footer>
         </body>
     </html>
