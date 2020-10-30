@@ -65,6 +65,41 @@
                         echo '>Таблица умножения на '.$i.'</a><br>';
                     }
 
+                    function outRow($n)
+                    {
+                        for ($i=2; $i<10; $i++)
+                            echo $n.'x'.$i.'='.($n*$i).'</br>';
+                    }
+
+                    function outTableForm() // функция вывода в табличной форме
+                    {
+                        if  (!isset($_GET['content']))  // если параметр content не был задан то выводим всю таблицу целиком
+                        {
+                            for ($i=2; $i<10; $i++) // счётчик от 2 до 9
+                            {
+                                echo '<div class="ttRow">';
+                                outRow($i);
+                                echo '</div>';
+                            }
+                        }
+                        else    // если параметр content был задан то выводим соответствующую таблицу
+                        {
+                            echo '<div class="ttSingleRow">';
+                            outRow($_GET['content']);
+                            echo '</div>';
+                        }
+                    }
+
+                    function outDivForm()   // функция вывода в блочной форме
+                    {
+
+                    }
+
+                    if (!isset($_GET['html_type']) || $_GET['html_type']=='TABLE')  // если тип вёрстки не задан (по умолчанию - табличная) или задан тип вёрстки "TABLE"
+                        outTableForm();
+                    else 
+                        outDivForm();
+
                 ?>
                 </div>
             </main>
