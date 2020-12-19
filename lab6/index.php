@@ -45,21 +45,28 @@
                         break;
                 }
             }
-            ?>
-            <form name="A" method="post" action="/">
-                <label for="name">ФИО<span style="color: red;"> *</span></label> <input required type="text" id="name"></input><br>
-                <label for="group">Номер группы<span style="color: red;"> *</span></label> <input required type="text" id="group"></input><br>
-                <label for="value_A">Значение A<span style="color: red;"> *</span></label> <input required type="text" id="value_A"></input><br>
-                <label for="value_B">Значение B<span style="color: red;"> *</span></label> <input required type="text" id="value_B"></input><br>
-                <label for="value_C">Значение C<span style="color: red;"> *</span></label> <input required type="text" id="value_C"></input><br>
-                <label for="answer">Ваш ответ<span style="color: red;"> *</span></label> <input required type="text"id="answer"> </input><br>
+
+            if (isset($result))
+            {
+                 //  выводим результат
+            }
+            else
+            {
+                echo
+                '<form name="A" method="post" action="/lab6/index.php">
+                <label for="name">ФИО<span style="color: red;"> *</span></label> <input type="text" id="name"></input><br>
+                <label for="group">Номер группы<span style="color: red;"> *</span></label> <input type="text" id="group"></input><br>
+                <label for="value_A">Значение A<span style="color: red;"> *</span></label> <input type="text" id="value_A"></input><br>
+                <label for="value_B">Значение B<span style="color: red;"> *</span></label> <input type="text" id="value_B"></input><br>
+                <label for="value_C">Значение C<span style="color: red;"> *</span></label> <input type="text" id="value_C"></input><br>
+                <label for="answer">Ваш ответ<span style="color: red;"> *</span></label> <input type="text"id="answer"> </input><br>
                 <label for="e-mail">Ваш e-mail</label> <input></input type="e-mail" id="e-mail"><br>
 
                 <label for="about">Немного о себе</label> <textarea id="about"></textarea><br>
                 <br>
 
                 <div class="select">
-                <input type="radio" style="margin-right: 5px;" id="case1" value="case1" name="case" <?php if (isset($_POST['radio']) && $_POST['radio'] == 'yes'): ?>checked='checked'<?php endif; ?>></input> <label for="case1">Площадь треугольника</label><br>
+                <input type="radio" style="margin-right: 5px;" id="case1" value="case1" name="case"></input> <label for="case1">Площадь треугольника</label><br>
                 <input type="radio" style="margin-right: 5px;" id="case2" value="case2" name="case"></input> <label for="case2">Периметр треугольника</label><br>
                 <input type="radio" style="margin-right: 5px;" id="case3" value="case3" name="case"></input> <label for="case3">Объём параллелепипеда</label><br>
                 <input type="radio" style="margin-right: 5px;" id="case4" value="case4" name="case"></input> <label for="case4">Среднее арифметическое</label><br>
@@ -76,7 +83,10 @@
                 <br>
 
                 <input type="submit" id="check" value="Проверить"></input>
-                </form>
+                    </form>';
+            }
+            ?>
+            
             </main>
 
         <footer>
