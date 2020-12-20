@@ -50,43 +50,53 @@
 
             if (isset($result))
             {
-                echo 'ФИО: '.$_POST['name'].'<br>'; //  если результат есть то выводим его
-                echo 'Номер группы: '.$_POST['group'].'<br>';
+                $out_text = 'ФИО: '.$_POST['name'].'<br>'; //  если результат есть, то сохраняем отчёт в переменную
+                $out_text .= 'Номер группы: '.$_POST['group'].'<br>';
                 
                 if (isset($_POST['about']))
-                    echo '<br>'.$_POST['about'].'<br>';
+                    $out_text .= '<br>'.$_POST['about'].'<br>';
                 
-                echo 'Решаемая задача: ';
+                $out_text .= 'Решаемая задача: ';
                 switch ($_POST['case'])
                 {
                     case 'case1':
-                        echo 'площадь треугольника';
+                        $out_text .= 'площадь треугольника';
                         break;
                     case 'case2': 
-                        echo 'периметр треугольника';
+                        $out_text .= 'периметр треугольника';
                         break;
                     case 'case3': 
-                        echo 'объём параллелепипеда';
+                        $out_text .= 'объём параллелепипеда';
                         break;
                     case 'case4':   
-                        echo 'среднее арифметическое';
+                        $out_text .= 'среднее арифметическое';
                         break;
                     case 'case5':   
-                        echo 'квадрат суммы';
+                        $out_text .= 'квадрат суммы';
                         break;
                     case 'case6':   
-                        echo 'сумма квадратов';
+                        $out_text .= 'сумма квадратов';
                         break;
                 }
                 
                 if ($result == $_POST['answer'])
-                    echo '<br><br><b style="color: green;">Поздравляем, ваш ответ правильный, тест пройден!</b><br>';
+                    $out_text .= '<br><br><b style="color: green;">Поздравляем, ваш ответ правильный, тест пройден!</b><br>';
                 else
-                    echo '<br><br><b style="color: red;">К сожалению ваш ответ неверный, тест не пройден.</b><br>';
+                    $out_text .= '<br><br><b style="color: red;">К сожалению ваш ответ неверный, тест не пройден.</b><br>';
+
+                echo $out_text; // выводим отчёт в браузере
+
+                if (array_key_exists('send_e-mail', $_POST))    // если отчёт нужно отправить на почту
+                {
+                    mail($_POST['e-mail'], 'Результат тестирования',
+                        str_replace('<br>', "\r\n", $out_text),  // преобразование <br> на "язык" e-mail
+                        "From: auto@mami.ru\n"."Content-type: text/plain; charset=utf-8\n");
+                        echo '<i>Результаты теста были автоматически отправлены на ваш e-mail</i>';
+                }
             }
             else
             {
-                echo    // если результата нет то выводим форму
+                echo    // если результата нет, то выводим форму
                 '<form name="form" method="post" action="/lab6/index.php">
                 <label for="name">ФИО<span style="color: red;"> *</span></label> <input type="text" id="name" name="name"></input><br>
                 <label for="group">Номер группы<span style="color: red;"> *</span></label> <input type="text" id="group" name="group"></input><br>
@@ -94,7 +104,7 @@
                 <label for="value_B">Значение B<span style="color: red;"> *</span></label> <input type="text" id="value_B" name="B"></input><br>
                 <label for="value_C">Значение C<span style="color: red;"> *</span></label> <input type="text" id="value_C" name="C"></input><br>
                 <label for="answer">Ваш ответ<span style="color: red;"> *</span></label> <input type="text" id="answer" name="answer"> </input><br>
-                <label for="e-mail">Ваш e-mail</label> <input></input type="e-mail" id="e-mail"><br>
+                <label for="e-mail">Ваш e-mail</label> <input type="e-mail" id="e-mail" name="e-mail"></input><br>
 
                 <label for="about">Немного о себе</label> <textarea id="about"></textarea><br>
                 <br>
@@ -109,7 +119,7 @@
                     </div>
                 <br>
 
-                <input type="checkbox" style="margin-right: 5px;" id="result_e-mail"> <label style="float: unset;">Отправить результат теста по e-mail</label><br>
+                <input type="checkbox" style="margin-right: 5px;" id="send_e-mail" name="send_e-mail"> <label for="send_e-mail" style="float: unset;">Отправить результат теста по e-mail</label><br>
                 <br>
 
                 <input type="radio"  style="margin-right: 5px;" id="browser" name="version"></input> <label for="browser" style="float: unset;">Версия для просмотра в браузере</label><br>
