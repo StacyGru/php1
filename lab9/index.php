@@ -25,17 +25,8 @@
             <?php
                 require "menu.php";
 
-                if ($_GET['p'] == 'viewer')
-                    include 'viewer.php';
-                else
-                if ($_GET['p'] == 'add')
-                    include 'add.php';
-                else
-                if ($_GET['p'] == 'edir')
-                    include 'edit.php';
-                else
-                if ($_GET['p'] == 'delete')
-                    include 'delete.php';
+                if (file_exists($_GET['p'].'.php'))
+                    include $_GET['p'].'.php';
             ?>
 
             </main>
