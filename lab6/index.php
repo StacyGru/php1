@@ -20,10 +20,12 @@
             </header>
 
         <main>
+
             <?php
-            if (isset($_POST['A'])) // если в форму были введены данные
+            if (isset($_POST['form'])) // если в форму были введены данные
             {
-                switch ($_POST['case']) {
+                switch ($_POST['case'])
+                {
                     case 'case1':   // площадь треугольника
                         $p = ($_POST['A'] + $_POST['B'] + $_POST['C'])/2;
                         $result = sqrt($p*($p - $_POST['A'])*($p - $_POST['B'])*($p - $_POST['C']));
@@ -48,25 +50,57 @@
 
             if (isset($result))
             {
-                 //  выводим результат
+                echo 'ФИО: '.$_POST['name'].'<br>'; //  если результат есть то выводим его
+                echo 'Номер группы: '.$_POST['group'].'<br>';
+                
+                if (isset($_POST['about']))
+                    echo '<br>'.$_POST['about'].'<br>';
+                
+                echo 'Решаемая задача: ';
+                switch ($_POST['case'])
+                {
+                    case 'case1':
+                        echo 'площадь треугольника';
+                        break;
+                    case 'case2': 
+                        echo 'периметр треугольника';
+                        break;
+                    case 'case3': 
+                        echo 'объём параллелепипеда';
+                        break;
+                    case 'case4':   
+                        echo 'среднее арифметическое';
+                        break;
+                    case 'case5':   
+                        echo 'квадрат суммы';
+                        break;
+                    case 'case6':   
+                        echo 'сумма квадратов';
+                        break;
+                }
+                
+                if ($result == $_POST['answer'])
+                    echo '<br><br><b style="color: green;">Поздравляем, ваш ответ правильный, тест пройден!</b><br>';
+                else
+                    echo '<br><br><b style="color: red;">К сожалению ваш ответ неверный, тест не пройден.</b><br>';
             }
             else
             {
-                echo
-                '<form name="A" method="post" action="/lab6/index.php">
-                <label for="name">ФИО<span style="color: red;"> *</span></label> <input type="text" id="name"></input><br>
-                <label for="group">Номер группы<span style="color: red;"> *</span></label> <input type="text" id="group"></input><br>
-                <label for="value_A">Значение A<span style="color: red;"> *</span></label> <input type="text" id="value_A"></input><br>
-                <label for="value_B">Значение B<span style="color: red;"> *</span></label> <input type="text" id="value_B"></input><br>
-                <label for="value_C">Значение C<span style="color: red;"> *</span></label> <input type="text" id="value_C"></input><br>
-                <label for="answer">Ваш ответ<span style="color: red;"> *</span></label> <input type="text"id="answer"> </input><br>
+                echo    // если результата нет то выводим форму
+                '<form name="form" method="post" action="/lab6/index.php">
+                <label for="name">ФИО<span style="color: red;"> *</span></label> <input type="text" id="name" name="name"></input><br>
+                <label for="group">Номер группы<span style="color: red;"> *</span></label> <input type="text" id="group" name="group"></input><br>
+                <label for="value_A">Значение A<span style="color: red;"> *</span></label> <input type="text" id="value_A" name="A"></input><br>
+                <label for="value_B">Значение B<span style="color: red;"> *</span></label> <input type="text" id="value_B" name="B"></input><br>
+                <label for="value_C">Значение C<span style="color: red;"> *</span></label> <input type="text" id="value_C" name="C"></input><br>
+                <label for="answer">Ваш ответ<span style="color: red;"> *</span></label> <input type="text" id="answer" name="answer"> </input><br>
                 <label for="e-mail">Ваш e-mail</label> <input></input type="e-mail" id="e-mail"><br>
 
                 <label for="about">Немного о себе</label> <textarea id="about"></textarea><br>
                 <br>
 
                 <div class="select">
-                <input type="radio" style="margin-right: 5px;" id="case1" value="case1" name="case"></input> <label for="case1">Площадь треугольника</label><br>
+                <input checked="checked" type="radio" style="margin-right: 5px;" id="case1" value="case1" name="case"></input> <label for="case1">Площадь треугольника</label><br>
                 <input type="radio" style="margin-right: 5px;" id="case2" value="case2" name="case"></input> <label for="case2">Периметр треугольника</label><br>
                 <input type="radio" style="margin-right: 5px;" id="case3" value="case3" name="case"></input> <label for="case3">Объём параллелепипеда</label><br>
                 <input type="radio" style="margin-right: 5px;" id="case4" value="case4" name="case"></input> <label for="case4">Среднее арифметическое</label><br>
@@ -82,7 +116,7 @@
                 <input type="radio"  style="margin-right: 5px;" id="print" name="version"></input> <label for="print" style="float: unset;">Версия для печати</label><br>
                 <br>
 
-                <input type="submit" id="check" value="Проверить"></input>
+                <input type="submit" id="check" value="Проверить" name="form"></input>
                     </form>';
             }
             ?>
