@@ -2,6 +2,9 @@
     <?php
         if (!isset($_GET['p']))
             $_GET['p'] = 'viewer';    // по умолчанию режим "просмотр"
+
+        if (!isset($_GET['pg']))    // если номер страницы не указан то выводим первую
+            $_GET['pg'] = 0;
         
         echo '<a href="/lab9/index.php/?p=viewer"'; // вывод 1-го пункта меню
         if ($_GET['p'] == 'viewer')
@@ -10,11 +13,11 @@
         if ($_GET['p'] == 'viewer')
         {
             echo '<div id="submenu" class="submenu">';  // вывести подменю
-            echo '<a href="/lab9/index.php/?p=viewer&sort=by_id"';
+            echo '<a href="/lab9/index.php/?p=viewer&pg='.$_GET['pg'].'&sort=by_id"';
             if (!isset($_GET['sort']) || $_GET['sort'] == 'by_id')
                 echo 'class="selected"';   // 1-ый пункт подменю (selected по умолчанию)
             echo '>По умолчанию</a><br>';
-            echo '<a href="/lab9/index.php/?p=viewer&sort=by_surname"';
+            echo '<a href="/lab9/index.php/?p=viewer&pg='.$_GET['pg'].'&sort=by_surname"';
             if (isset($_GET['sort']) && $_GET['sort'] == 'by_surname')
                 echo 'class="selected"'; // 2-ой пункт подменю
             echo '>По фамилии</a><br><br>';

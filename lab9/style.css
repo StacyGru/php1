@@ -76,3 +76,26 @@ a
 {
     font-size: 15px;
 }
+
+table
+{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 90vw;
+}
+
+td, th
+{
+    padding: 5px 10px;
+}
+
+label
+{
+    float: left;
+    width: 150px;
+}
+
+input
+{
+    margin: 5px 0 5px;
+}
