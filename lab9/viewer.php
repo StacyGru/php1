@@ -1,7 +1,7 @@
 <?php
     function getFriendsList ($type, $page)
     {
-        $mysqli = mysqli_connect ('localhost', 'root', '', 'friends');  // подключаемся к БД
+        $mysqli = mysqli_connect ('std-mysql', 'std_940', '12345678', 'friends');  // подключаемся к БД
         // $mysqli(подключение к БД) - переменная с данными для подключения к БД
         
         if (mysqli_connect_errno()) // если не удаётся подключиться выводим сообщение

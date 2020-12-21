@@ -16,7 +16,7 @@
 <?php
     if (isset($_POST['button']) && $_POST['button'] == 'Добавить запись')
     {
-        $mysqli = mysqli_connect('localhost', 'root', '', 'friends');
+        $mysqli = mysqli_connect('std-mysql', 'std_940', '12345678', 'friends');
 
         if (mysqli_connect_errno()) // если не удаётся подключиться выводим сообщение
             return 'Ошибка подключения к БД: '.mysqli_connect_error();
