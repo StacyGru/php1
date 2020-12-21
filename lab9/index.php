@@ -25,8 +25,21 @@
             <?php
                 require "menu.php";
 
-                if (file_exists($_GET['p'].'.php'))
-                    include $_GET['p'].'.php';
+                if ($_GET['p'] == 'viewer')
+                {
+                    include 'viewer.php';
+
+                    if (!isset($_GET['pg']))    // если номер страницы не указан то выводим первую
+                        $_GET['pg'] = 0;
+
+                    if (!isset($_GET['sort']) || $_GET['sort'] != 'by_id' && $_GET['sort'] != 'by_surname' && $_GET['sort'] != 'by_birth')
+                        $_GET['sort'] = 'by_id';    // если тип сортировки не указан или недопустим то уст. сортировку по id
+
+                    echo getFriendsList($_GET['sort'], $_GET['pg']);
+                }
+                else
+                    if (file_exists($_GET['p'].'.php'))
+                        include $_GET['p'].'.php';
             ?>
 
             </main>

@@ -36,7 +36,7 @@
         echo '<a href="/lab9/index.php/?p=delete"';    // вывод 4-го пункта меню
         if ($_GET['p'] == 'delete')
             echo 'class="selected"';    // выделить если selected
-        echo '>Удаление записи</a>';
+        echo '>Удаление записи</a><br><br><br>';
 
         if (isset($_GET['p']) && $_GET['p'] != 'viewer' && $_GET['p'] != 'add' && $_GET['p'] != 'edit' && $_GET['p'] != 'delete')
             exit;
